@@ -30,7 +30,7 @@ Alternatively, you can use terminal to execute curl commands:
 request param: level (1 to 4)
 
 ```sh
-curl "http://localhost:8080/api/v1/ticketing/seats"
+curl "http://localhost:8080/api/v1/ticketing/seats?level=1"
 ```
 
 
