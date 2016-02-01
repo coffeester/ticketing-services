@@ -132,14 +132,18 @@ public class SeatRepositoryImpl implements SeatRepository {
 
 
     private Reservation findReservation(long reservationId) {
-
+        Reservation reservation;
         try {
-            return this.jdbcTemplate.queryForObject(SQLConstants.SELECT_RESERVATION, new Object[]{
+            reservation = this.jdbcTemplate.queryForObject(SQLConstants.SELECT_RESERVATION, new
+                    Object[]{
                     reservationId
             }, new ReservationMapper());
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
+
+        logger.info("Reservation code returned :" + reservation.getConfirmationCode());
+        return reservation;
 
     }
 

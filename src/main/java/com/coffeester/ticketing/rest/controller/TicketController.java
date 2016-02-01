@@ -71,17 +71,18 @@ public class TicketController {
 
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/reserve", produces = MediaType
-            .APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/reserve")
     @ResponseBody
     public ResponseEntity<String> reserveSeats(@RequestParam(value = "seatHoldId")
                                                int seatHoldId,
                                                @RequestParam(value = "customerEmail") String
                                                        customerEmail) {
-        logger.info("Rseserve tickets for customer ={} ", customerEmail);
+        logger.info("Reserve tickets for customer ={} ", customerEmail);
 
 
         String confirmationCode = ticketService.reserveSeats(seatHoldId, customerEmail);
+        logger.info("ConfirmationCode  code  returned ={} ", confirmationCode);
+
         return new ResponseEntity<String>("{confirmation_code : " + confirmationCode + "}", HttpStatus
                 .OK);
 
