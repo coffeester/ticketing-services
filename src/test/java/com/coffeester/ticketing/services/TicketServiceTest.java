@@ -1,6 +1,5 @@
 package com.coffeester.ticketing.services;
 
-import com.coffeester.ticketing.domain.Seat;
 import com.coffeester.ticketing.domain.SeatHold;
 import com.coffeester.ticketing.exception.LevelDoesntExistsException;
 import com.coffeester.ticketing.repository.impl.SeatRepositoryImpl;
@@ -18,7 +17,6 @@ import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,11 +33,10 @@ import java.util.Optional;
         .class, SeatRepositoryImpl.class})
 public class TicketServiceTest {
 
-    @Autowired
-    TicketService ticketService;
-
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
+    @Autowired
+    TicketService ticketService;
 
     @Test
     public void testAvailability() {
@@ -105,9 +102,9 @@ public class TicketServiceTest {
 
         String customerEmail = "johndoe@example.com";
 
-            SeatHold seatHold = ticketService.findAndHoldSeats(3, Optional.of(2), Optional.of
-                            (2),
-                    customerEmail);
+        SeatHold seatHold = ticketService.findAndHoldSeats(3, Optional.of(2), Optional.of
+                        (2),
+                customerEmail);
         // Assert the seats are in sequence
         Assert.assertTrue(seatHold.getSeats().get(0).getSeatNumber() == seatHold.getSeats().get
                 (1).getSeatNumber() - 1);

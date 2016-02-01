@@ -4,7 +4,7 @@
 
 ```shell
 
-git clone
+git clone https://github.com/coffeester/ticketing-services.git
 
 cd ticketing-services
 
@@ -54,4 +54,13 @@ curl "http://localhost:8080/api/v1/ticketing/reserve?seatHoldId=1&customerEmail=
 
 ```sh
 ./gradlew clean build
+
+#OR for more verbose output
+
+./gradlew clean test -i
 ```
+###Assumptions
+
+1. Tickets will be held starting from lowest level to highest.
+2. Level will default to min=1 and max=4; if no level specified.
+3. Some data has been seeded into seat table to run above curl commands. You can use the same parameters swagger-ui

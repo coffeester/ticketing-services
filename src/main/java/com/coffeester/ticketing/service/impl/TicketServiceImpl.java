@@ -27,9 +27,12 @@ public class TicketServiceImpl implements TicketService {
 
     private static final Logger logger = LoggerFactory
             .getLogger(TicketServiceImpl.class);
+
     SeatHold seatHold = null;
-    @Value("${highest.level:4}")
+
+    @Value("${venue.highest.level:4}")
     private String highestLevel;
+
     @Autowired
     private SeatRepository seatRepository;
 
@@ -155,10 +158,10 @@ public class TicketServiceImpl implements TicketService {
 
         //if we can find seats is serial
         if (seatInSerial != null && seatInSerial.size() >= numSeats) {
-            return removeExtraSeats(seatInSerial,numSeats);
+            return removeExtraSeats(seatInSerial, numSeats);
         }
 
-        return removeExtraSeats(seats,numSeats);
+        return removeExtraSeats(seats, numSeats);
     }
 
     /**
@@ -174,16 +177,14 @@ public class TicketServiceImpl implements TicketService {
 
     /**
      * remove extra seats from end
-     * @param seats
-     * @param numOfSeats
-     * @return
      */
-    List<Seat> removeExtraSeats(List<Seat> seats, int numOfSeats){
+    List<Seat> removeExtraSeats(List<Seat> seats, int numOfSeats) {
 
-        if(seats.size() > numOfSeats) {
+        List<Seat> seatsAfterRemoval = null;
+        if (seats.size() > numOfSeats) {
             int extraSeats = seats.size() - numOfSeats;
-            seats.remove(seats.size() - extraSeats);
-
+            seatsAfterRemoval = seats.subList(0, numOfSeats);
+            return seatsAfterRemoval;
         }
         return seats;
     }

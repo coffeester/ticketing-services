@@ -78,7 +78,7 @@ public class TicketController {
                                                int seatHoldId,
                                                @RequestParam(value = "customerEmail") String
                                                        customerEmail) {
-        logger.info("Rseserve tcikets for customer ={} ", customerEmail);
+        logger.info("Rseserve tickets for customer ={} ", customerEmail);
 
 
         String confirmationCode = ticketService.reserveSeats(seatHoldId, customerEmail);

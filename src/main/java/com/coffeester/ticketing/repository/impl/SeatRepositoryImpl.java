@@ -47,6 +47,7 @@ public class SeatRepositoryImpl implements SeatRepository {
             .getLogger(SeatRepositoryImpl.class);
     @Autowired
     Environment env;
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -204,8 +205,8 @@ public class SeatRepositoryImpl implements SeatRepository {
     @Override
     public Integer findByCustomerEmail(String customerEmail) {
         Integer customerId;
-        String schemaName = env.getProperty("db.schema.name") != null?env.getProperty("db.schema" +
-                ".name")+".":"";
+        String schemaName = env.getProperty("db.schema.name") != null ? env.getProperty("db.schema" +
+                ".name") + "." : "";
         try {
             customerId = jdbcTemplate.queryForObject("SELECT ID FROM " +
                     schemaName + "CUSTOMER WHERE " +
