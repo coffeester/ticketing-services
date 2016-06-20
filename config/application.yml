@@ -17,4 +17,4 @@ db:
     schema.name: ticketing
 
 ticketing:
-    hold.expiry.schedule: 0 0/30 * * * ?
+    hold.expiry.schedule: 0 0/1 * * * ?

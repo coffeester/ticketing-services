@@ -14,7 +14,7 @@ import java.util.Date;
 /**
  * Created by amitsehgal on 1/30/16.
  */
-@Component
+//@Component
 public class CleanUpScheduler {
 
     private static final Logger logger = LoggerFactory
