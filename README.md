@@ -59,11 +59,3 @@ curl "http://localhost:8080/api/v1/ticketing/reserve?seatHoldId=1&customerEmail=
 
 ./gradlew clean test -i
 ```
-###Assumptions
-
-1. Tickets will be held starting from lowest level to highest.
-2. Level will default to min=1 and max=4; if no level specified.
-3. Some data has been seeded into seat table to run above curl commands. You can use the same request parameters in swagger-ui.
-4. To squeeze the dataset the seeded data is only for level 1 & 2 with 6 seats each. [seeded data](https://github.com/coffeester/ticketing-services/blob/master/src/main/resources/import.sql)
-5. Default customerEmail = johndoe@example.com
-6. App-configuration file application.yml is externalized under ticketing-services/config and is not available in the fatJar. Please do not forget to use (same if you are importing in idea/eclipse) -Dspring.config.location="config/"
